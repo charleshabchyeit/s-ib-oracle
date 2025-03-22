@@ -1,0 +1,29 @@
+#%RAML 1.0
+title: s-ib-oracle
+
+uses:
+  lb: library/library.raml
+
+/records:
+  /select:
+    type: 
+      lb.get:
+        addDescription: "Get any records from Oracle Database based on queryString"
+        queryParams: 
+          queryString:
+            type: string
+            required: true
+        getResponseType: array
+        getResponseExample: !include /example/records/get-records-exp.raml
+
+  /create:
+    type:
+      lb.post:
+        addDescription: "Create any records in Oracle Database"
+        queryParams:
+          tableName:
+            type: string
+            required: true
+        bodyType: !include /data-type/records/post-records.raml
+        getResponseType: object
+        getResponseExample: !include /example/records/post-records-exp.raml

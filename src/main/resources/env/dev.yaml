@@ -1,0 +1,11 @@
+env: "dev"
+
+http:
+  port: "8081"
+  
+config:
+  oracle:
+    host: "JIFDBUAT"
+    port: "1521"
+    user: "uatUser"
+    password: "uatPassword"

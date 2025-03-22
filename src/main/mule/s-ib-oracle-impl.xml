@@ -1,0 +1,828 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mule xmlns:db="http://www.mulesoft.org/schema/mule/db" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:apikit="http://www.mulesoft.org/schema/mule/mule-apikit" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/mule/mule-apikit/current/mule-apikit.xsd http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd 
+http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd">
+    <flow name="get:\records\select:s-ib-oracle-config">
+		<ee:transform doc:name="Transform Message">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+[
+    {
+        "loan_id": "LN0001",
+        "customer_id": "CUST0001",
+        "borrower_name": "Borrower 1",
+        "loan_amount": 27667.88,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-02"
+    },
+    {
+        "loan_id": "LN0002",
+        "customer_id": "CUST0002",
+        "borrower_name": "Borrower 2",
+        "loan_amount": 8231.21,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-03"
+    },
+    {
+        "loan_id": "LN0003",
+        "customer_id": "CUST0003",
+        "borrower_name": "Borrower 3",
+        "loan_amount": 13597.81,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-04"
+    },
+    {
+        "loan_id": "LN0004",
+        "customer_id": "CUST0004",
+        "borrower_name": "Borrower 4",
+        "loan_amount": 14549.41,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-05"
+    },
+    {
+        "loan_id": "LN0005",
+        "customer_id": "CUST0005",
+        "borrower_name": "Borrower 5",
+        "loan_amount": 4224.13,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-06"
+    },
+    {
+        "loan_id": "LN0006",
+        "customer_id": "CUST0006",
+        "borrower_name": "Borrower 6",
+        "loan_amount": 36488.63,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-07"
+    },
+    {
+        "loan_id": "LN0007",
+        "customer_id": "CUST0007",
+        "borrower_name": "Borrower 7",
+        "loan_amount": 11113.12,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-08"
+    },
+    {
+        "loan_id": "LN0008",
+        "customer_id": "CUST0008",
+        "borrower_name": "Borrower 8",
+        "loan_amount": 37714.11,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-09"
+    },
+    {
+        "loan_id": "LN0009",
+        "customer_id": "CUST0009",
+        "borrower_name": "Borrower 9",
+        "loan_amount": 47103.21,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-10"
+    },
+    {
+        "loan_id": "LN0010",
+        "customer_id": "CUST0010",
+        "borrower_name": "Borrower 10",
+        "loan_amount": 39106.85,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-11"
+    },
+    {
+        "loan_id": "LN0011",
+        "customer_id": "CUST0011",
+        "borrower_name": "Borrower 11",
+        "loan_amount": 33487.85,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-12"
+    },
+    {
+        "loan_id": "LN0012",
+        "customer_id": "CUST0012",
+        "borrower_name": "Borrower 12",
+        "loan_amount": 44488.58,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-13"
+    },
+    {
+        "loan_id": "LN0013",
+        "customer_id": "CUST0013",
+        "borrower_name": "Borrower 13",
+        "loan_amount": 47333.34,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-14"
+    },
+    {
+        "loan_id": "LN0014",
+        "customer_id": "CUST0014",
+        "borrower_name": "Borrower 14",
+        "loan_amount": 42742.79,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-15"
+    },
+    {
+        "loan_id": "LN0015",
+        "customer_id": "CUST0015",
+        "borrower_name": "Borrower 15",
+        "loan_amount": 8826.05,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-16"
+    },
+    {
+        "loan_id": "LN0016",
+        "customer_id": "CUST0016",
+        "borrower_name": "Borrower 16",
+        "loan_amount": 38609.08,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-17"
+    },
+    {
+        "loan_id": "LN0017",
+        "customer_id": "CUST0017",
+        "borrower_name": "Borrower 17",
+        "loan_amount": 27142.67,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-18"
+    },
+    {
+        "loan_id": "LN0018",
+        "customer_id": "CUST0018",
+        "borrower_name": "Borrower 18",
+        "loan_amount": 16079.58,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-19"
+    },
+    {
+        "loan_id": "LN0019",
+        "customer_id": "CUST0019",
+        "borrower_name": "Borrower 19",
+        "loan_amount": 26831.46,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-20"
+    },
+    {
+        "loan_id": "LN0020",
+        "customer_id": "CUST0020",
+        "borrower_name": "Borrower 20",
+        "loan_amount": 21309.68,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-21"
+    },
+    {
+        "loan_id": "LN0021",
+        "customer_id": "CUST0021",
+        "borrower_name": "Borrower 21",
+        "loan_amount": 40017.76,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-22"
+    },
+    {
+        "loan_id": "LN0022",
+        "customer_id": "CUST0022",
+        "borrower_name": "Borrower 22",
+        "loan_amount": 11546.33,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-23"
+    },
+    {
+        "loan_id": "LN0023",
+        "customer_id": "CUST0023",
+        "borrower_name": "Borrower 23",
+        "loan_amount": 31347.03,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-24"
+    },
+    {
+        "loan_id": "LN0024",
+        "customer_id": "CUST0024",
+        "borrower_name": "Borrower 24",
+        "loan_amount": 9567.81,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-25"
+    },
+    {
+        "loan_id": "LN0025",
+        "customer_id": "CUST0025",
+        "borrower_name": "Borrower 25",
+        "loan_amount": 33456.84,
+        "loan_status": "Rejected",
+        "loan_date": "2023-01-26"
+    },
+    {
+        "loan_id": "LN0026",
+        "customer_id": "CUST0026",
+        "borrower_name": "Borrower 26",
+        "loan_amount": 19489.55,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-27"
+    },
+    {
+        "loan_id": "LN0027",
+        "customer_id": "CUST0027",
+        "borrower_name": "Borrower 27",
+        "loan_amount": 16920.87,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-28"
+    },
+    {
+        "loan_id": "LN0028",
+        "customer_id": "CUST0028",
+        "borrower_name": "Borrower 28",
+        "loan_amount": 6434.86,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-29"
+    },
+    {
+        "loan_id": "LN0029",
+        "customer_id": "CUST0029",
+        "borrower_name": "Borrower 29",
+        "loan_amount": 42746.59,
+        "loan_status": "Pending",
+        "loan_date": "2023-01-30"
+    },
+    {
+        "loan_id": "LN0030",
+        "customer_id": "CUST0030",
+        "borrower_name": "Borrower 30",
+        "loan_amount": 6309.42,
+        "loan_status": "Approved",
+        "loan_date": "2023-01-31"
+    },
+    {
+        "loan_id": "LN0031",
+        "customer_id": "CUST0031",
+        "borrower_name": "Borrower 31",
+        "loan_amount": 9641.46,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-01"
+    },
+    {
+        "loan_id": "LN0032",
+        "customer_id": "CUST0032",
+        "borrower_name": "Borrower 32",
+        "loan_amount": 26184.13,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-02"
+    },
+    {
+        "loan_id": "LN0033",
+        "customer_id": "CUST0033",
+        "borrower_name": "Borrower 33",
+        "loan_amount": 30363.31,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-03"
+    },
+    {
+        "loan_id": "LN0034",
+        "customer_id": "CUST0034",
+        "borrower_name": "Borrower 34",
+        "loan_amount": 23193.1,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-04"
+    },
+    {
+        "loan_id": "LN0035",
+        "customer_id": "CUST0035",
+        "borrower_name": "Borrower 35",
+        "loan_amount": 41567.33,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-05"
+    },
+    {
+        "loan_id": "LN0036",
+        "customer_id": "CUST0036",
+        "borrower_name": "Borrower 36",
+        "loan_amount": 11311.19,
+        "loan_status": "Approved",
+        "loan_date": "2023-02-06"
+    },
+    {
+        "loan_id": "LN0037",
+        "customer_id": "CUST0037",
+        "borrower_name": "Borrower 37",
+        "loan_amount": 5592.3,
+        "loan_status": "Approved",
+        "loan_date": "2023-02-07"
+    },
+    {
+        "loan_id": "LN0038",
+        "customer_id": "CUST0038",
+        "borrower_name": "Borrower 38",
+        "loan_amount": 49905.08,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-08"
+    },
+    {
+        "loan_id": "LN0039",
+        "customer_id": "CUST0039",
+        "borrower_name": "Borrower 39",
+        "loan_amount": 44955.91,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-09"
+    },
+    {
+        "loan_id": "LN0040",
+        "customer_id": "CUST0040",
+        "borrower_name": "Borrower 40",
+        "loan_amount": 43494.52,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-10"
+    },
+    {
+        "loan_id": "LN0041",
+        "customer_id": "CUST0041",
+        "borrower_name": "Borrower 41",
+        "loan_amount": 1207.1,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-11"
+    },
+    {
+        "loan_id": "LN0042",
+        "customer_id": "CUST0042",
+        "borrower_name": "Borrower 42",
+        "loan_amount": 6040.28,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-12"
+    },
+    {
+        "loan_id": "LN0043",
+        "customer_id": "CUST0043",
+        "borrower_name": "Borrower 43",
+        "loan_amount": 35716.59,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-13"
+    },
+    {
+        "loan_id": "LN0044",
+        "customer_id": "CUST0044",
+        "borrower_name": "Borrower 44",
+        "loan_amount": 11657.77,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-14"
+    },
+    {
+        "loan_id": "LN0045",
+        "customer_id": "CUST0045",
+        "borrower_name": "Borrower 45",
+        "loan_amount": 27091.08,
+        "loan_status": "Approved",
+        "loan_date": "2023-02-15"
+    },
+    {
+        "loan_id": "LN0046",
+        "customer_id": "CUST0046",
+        "borrower_name": "Borrower 46",
+        "loan_amount": 13817.92,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-16"
+    },
+    {
+        "loan_id": "LN0047",
+        "customer_id": "CUST0047",
+        "borrower_name": "Borrower 47",
+        "loan_amount": 21559.48,
+        "loan_status": "Approved",
+        "loan_date": "2023-02-17"
+    },
+    {
+        "loan_id": "LN0048",
+        "customer_id": "CUST0048",
+        "borrower_name": "Borrower 48",
+        "loan_amount": 36338.14,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-18"
+    },
+    {
+        "loan_id": "LN0049",
+        "customer_id": "CUST0049",
+        "borrower_name": "Borrower 49",
+        "loan_amount": 38756.62,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-19"
+    },
+    {
+        "loan_id": "LN0050",
+        "customer_id": "CUST0050",
+        "borrower_name": "Borrower 50",
+        "loan_amount": 29003.58,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-20"
+    },
+    {
+        "loan_id": "LN0051",
+        "customer_id": "CUST0051",
+        "borrower_name": "Borrower 51",
+        "loan_amount": 37660.69,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-21"
+    },
+    {
+        "loan_id": "LN0052",
+        "customer_id": "CUST0052",
+        "borrower_name": "Borrower 52",
+        "loan_amount": 37723.77,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-22"
+    },
+    {
+        "loan_id": "LN0053",
+        "customer_id": "CUST0053",
+        "borrower_name": "Borrower 53",
+        "loan_amount": 37326.46,
+        "loan_status": "Approved",
+        "loan_date": "2023-02-23"
+    },
+    {
+        "loan_id": "LN0054",
+        "customer_id": "CUST0054",
+        "borrower_name": "Borrower 54",
+        "loan_amount": 28051.39,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-24"
+    },
+    {
+        "loan_id": "LN0055",
+        "customer_id": "CUST0055",
+        "borrower_name": "Borrower 55",
+        "loan_amount": 18936.37,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-25"
+    },
+    {
+        "loan_id": "LN0056",
+        "customer_id": "CUST0056",
+        "borrower_name": "Borrower 56",
+        "loan_amount": 40007.05,
+        "loan_status": "Pending",
+        "loan_date": "2023-02-26"
+    },
+    {
+        "loan_id": "LN0057",
+        "customer_id": "CUST0057",
+        "borrower_name": "Borrower 57",
+        "loan_amount": 4900.45,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-27"
+    },
+    {
+        "loan_id": "LN0058",
+        "customer_id": "CUST0058",
+        "borrower_name": "Borrower 58",
+        "loan_amount": 38424.06,
+        "loan_status": "Rejected",
+        "loan_date": "2023-02-28"
+    },
+    {
+        "loan_id": "LN0059",
+        "customer_id": "CUST0059",
+        "borrower_name": "Borrower 59",
+        "loan_amount": 25572.42,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-01"
+    },
+    {
+        "loan_id": "LN0060",
+        "customer_id": "CUST0060",
+        "borrower_name": "Borrower 60",
+        "loan_amount": 18434.15,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-02"
+    },
+    {
+        "loan_id": "LN0061",
+        "customer_id": "CUST0061",
+        "borrower_name": "Borrower 61",
+        "loan_amount": 9349.78,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-03"
+    },
+    {
+        "loan_id": "LN0062",
+        "customer_id": "CUST0062",
+        "borrower_name": "Borrower 62",
+        "loan_amount": 37771.05,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-04"
+    },
+    {
+        "loan_id": "LN0063",
+        "customer_id": "CUST0063",
+        "borrower_name": "Borrower 63",
+        "loan_amount": 27695.01,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-05"
+    },
+    {
+        "loan_id": "LN0064",
+        "customer_id": "CUST0064",
+        "borrower_name": "Borrower 64",
+        "loan_amount": 4596.38,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-06"
+    },
+    {
+        "loan_id": "LN0065",
+        "customer_id": "CUST0065",
+        "borrower_name": "Borrower 65",
+        "loan_amount": 21643.83,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-07"
+    },
+    {
+        "loan_id": "LN0066",
+        "customer_id": "CUST0066",
+        "borrower_name": "Borrower 66",
+        "loan_amount": 40151.09,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-08"
+    },
+    {
+        "loan_id": "LN0067",
+        "customer_id": "CUST0067",
+        "borrower_name": "Borrower 67",
+        "loan_amount": 41154.06,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-09"
+    },
+    {
+        "loan_id": "LN0068",
+        "customer_id": "CUST0068",
+        "borrower_name": "Borrower 68",
+        "loan_amount": 18830.71,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-10"
+    },
+    {
+        "loan_id": "LN0069",
+        "customer_id": "CUST0069",
+        "borrower_name": "Borrower 69",
+        "loan_amount": 6876.29,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-11"
+    },
+    {
+        "loan_id": "LN0070",
+        "customer_id": "CUST0070",
+        "borrower_name": "Borrower 70",
+        "loan_amount": 26846.05,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-12"
+    },
+    {
+        "loan_id": "LN0071",
+        "customer_id": "CUST0071",
+        "borrower_name": "Borrower 71",
+        "loan_amount": 5519.57,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-13"
+    },
+    {
+        "loan_id": "LN0072",
+        "customer_id": "CUST0072",
+        "borrower_name": "Borrower 72",
+        "loan_amount": 24050.27,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-14"
+    },
+    {
+        "loan_id": "LN0073",
+        "customer_id": "CUST0073",
+        "borrower_name": "Borrower 73",
+        "loan_amount": 41356.91,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-15"
+    },
+    {
+        "loan_id": "LN0074",
+        "customer_id": "CUST0074",
+        "borrower_name": "Borrower 74",
+        "loan_amount": 21474.0,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-16"
+    },
+    {
+        "loan_id": "LN0075",
+        "customer_id": "CUST0075",
+        "borrower_name": "Borrower 75",
+        "loan_amount": 4303.07,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-17"
+    },
+    {
+        "loan_id": "LN0076",
+        "customer_id": "CUST0076",
+        "borrower_name": "Borrower 76",
+        "loan_amount": 26836.35,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-18"
+    },
+    {
+        "loan_id": "LN0077",
+        "customer_id": "CUST0077",
+        "borrower_name": "Borrower 77",
+        "loan_amount": 25114.78,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-19"
+    },
+    {
+        "loan_id": "LN0078",
+        "customer_id": "CUST0078",
+        "borrower_name": "Borrower 78",
+        "loan_amount": 10831.78,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-20"
+    },
+    {
+        "loan_id": "LN0079",
+        "customer_id": "CUST0079",
+        "borrower_name": "Borrower 79",
+        "loan_amount": 7778.7,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-21"
+    },
+    {
+        "loan_id": "LN0080",
+        "customer_id": "CUST0080",
+        "borrower_name": "Borrower 80",
+        "loan_amount": 47292.93,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-22"
+    },
+    {
+        "loan_id": "LN0081",
+        "customer_id": "CUST0081",
+        "borrower_name": "Borrower 81",
+        "loan_amount": 2691.4,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-23"
+    },
+    {
+        "loan_id": "LN0082",
+        "customer_id": "CUST0082",
+        "borrower_name": "Borrower 82",
+        "loan_amount": 25301.91,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-24"
+    },
+    {
+        "loan_id": "LN0083",
+        "customer_id": "CUST0083",
+        "borrower_name": "Borrower 83",
+        "loan_amount": 18537.39,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-25"
+    },
+    {
+        "loan_id": "LN0084",
+        "customer_id": "CUST0084",
+        "borrower_name": "Borrower 84",
+        "loan_amount": 29677.98,
+        "loan_status": "Approved",
+        "loan_date": "2023-03-26"
+    },
+    {
+        "loan_id": "LN0085",
+        "customer_id": "CUST0085",
+        "borrower_name": "Borrower 85",
+        "loan_amount": 37411.72,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-27"
+    },
+    {
+        "loan_id": "LN0086",
+        "customer_id": "CUST0086",
+        "borrower_name": "Borrower 86",
+        "loan_amount": 17911.6,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-28"
+    },
+    {
+        "loan_id": "LN0087",
+        "customer_id": "CUST0087",
+        "borrower_name": "Borrower 87",
+        "loan_amount": 44938.09,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-29"
+    },
+    {
+        "loan_id": "LN0088",
+        "customer_id": "CUST0088",
+        "borrower_name": "Borrower 88",
+        "loan_amount": 32940.01,
+        "loan_status": "Rejected",
+        "loan_date": "2023-03-30"
+    },
+    {
+        "loan_id": "LN0089",
+        "customer_id": "CUST0089",
+        "borrower_name": "Borrower 89",
+        "loan_amount": 47242.2,
+        "loan_status": "Pending",
+        "loan_date": "2023-03-31"
+    },
+    {
+        "loan_id": "LN0090",
+        "customer_id": "CUST0090",
+        "borrower_name": "Borrower 90",
+        "loan_amount": 22168.78,
+        "loan_status": "Rejected",
+        "loan_date": "2023-04-01"
+    },
+    {
+        "loan_id": "LN0091",
+        "customer_id": "CUST0091",
+        "borrower_name": "Borrower 91",
+        "loan_amount": 13214.75,
+        "loan_status": "Approved",
+        "loan_date": "2023-04-02"
+    },
+    {
+        "loan_id": "LN0092",
+        "customer_id": "CUST0092",
+        "borrower_name": "Borrower 92",
+        "loan_amount": 12505.23,
+        "loan_status": "Pending",
+        "loan_date": "2023-04-03"
+    },
+    {
+        "loan_id": "LN0093",
+        "customer_id": "CUST0093",
+        "borrower_name": "Borrower 93",
+        "loan_amount": 19871.25,
+        "loan_status": "Approved",
+        "loan_date": "2023-04-04"
+    },
+    {
+        "loan_id": "LN0094",
+        "customer_id": "CUST0094",
+        "borrower_name": "Borrower 94",
+        "loan_amount": 4462.84,
+        "loan_status": "Rejected",
+        "loan_date": "2023-04-05"
+    },
+    {
+        "loan_id": "LN0095",
+        "customer_id": "CUST0095",
+        "borrower_name": "Borrower 95",
+        "loan_amount": 8271.95,
+        "loan_status": "Rejected",
+        "loan_date": "2023-04-06"
+    },
+    {
+        "loan_id": "LN0096",
+        "customer_id": "CUST0096",
+        "borrower_name": "Borrower 96",
+        "loan_amount": 15984.28,
+        "loan_status": "Pending",
+        "loan_date": "2023-04-07"
+    },
+    {
+        "loan_id": "LN0097",
+        "customer_id": "CUST0097",
+        "borrower_name": "Borrower 97",
+        "loan_amount": 48367.04,
+        "loan_status": "Pending",
+        "loan_date": "2023-04-08"
+    },
+    {
+        "loan_id": "LN0098",
+        "customer_id": "CUST0098",
+        "borrower_name": "Borrower 98",
+        "loan_amount": 40936.49,
+        "loan_status": "Pending",
+        "loan_date": "2023-04-09"
+    },
+    {
+        "loan_id": "LN0099",
+        "customer_id": "CUST0099",
+        "borrower_name": "Borrower 99",
+        "loan_amount": 4508.8,
+        "loan_status": "Pending",
+        "loan_date": "2023-04-10"
+    },
+    {
+        "loan_id": "LN0100",
+        "customer_id": "CUST0100",
+        "borrower_name": "Borrower 100",
+        "loan_amount": 1818.36,
+        "loan_status": "Pending",
+        "loan_date": "2023-04-11"
+    }
+]]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    </flow>
+    <flow name="post:\records\create:application\json:s-ib-oracle-config">
+		<ee:transform doc:name="Transform Message">
+            <ee:message>
+                <ee:set-payload><![CDATA[%dw 2.0
+output application/json
+---
+{
+  Id: "123123yu12gt3uy12tuy",
+  success: "true"
+}]]></ee:set-payload>
+            </ee:message>
+        </ee:transform>
+    </flow>
+</mule>

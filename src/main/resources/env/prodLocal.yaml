@@ -1,0 +1,11 @@
+env: "prodLocal"
+
+http:
+  port: "8085"
+  
+config:
+  oracle:
+    host: "JIFDBPROD"
+    port: "1521"
+    user: "prodUser"
+    password: "prodPassword"
