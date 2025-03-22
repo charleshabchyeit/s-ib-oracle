@@ -31,7 +31,8 @@
 				<extensions>true</extensions>
 				<configuration>
 					<cloudHubDeployment>
-					    <target>CH2</target>
+					    <target>CH2</target> <!-- CloudHub 2.0 -->
+      					<provider>CH</provider> <!-- CloudHub provider -->
 						<uri>https://anypoint.mulesoft.com</uri>
 						<muleVersion>${mule.version}</muleVersion>
 						<username>${cloud.user}</username>
