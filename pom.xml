@@ -30,12 +30,17 @@
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<configuration>
-					<sharedLibraries>
-						<sharedLibrary>
-							<groupId>com.oracle.database.jdbc</groupId>
-							<artifactId>ojdbc11</artifactId>
-						</sharedLibrary>
-					</sharedLibraries>
+					<cloudHubDeployment>
+						<uri>https://anypoint.mulesoft.com</uri>
+						<muleVersion>${mule.version}</muleVersion>
+						<username>${cloud.user}</username>
+						<password>${cloud.password}</password>
+						<applicationName>${cloudhubAppName}</applicationName>
+						<environment>${cloud.env}</environment>
+						<properties>
+							<key>value</key>
+						</properties>
+					</cloudHubDeployment>
 				</configuration>
 			</plugin>
 		</plugins>
