@@ -1,0 +1,7 @@
+{
+    "envConfig":{
+        "envName" : "PROD",
+        "muleVersion": "4.9.2",
+        "cloudhubAppName": "s-ib-oracle-prod"
+    }
+}
