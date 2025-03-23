@@ -811,6 +811,7 @@ output application/json
 ]]]></ee:set-payload>
             </ee:message>
         </ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="114e467a-b1e3-4968-afd5-b1ff44117ae9" />
     </flow>
     <flow name="post:\records\create:application\json:s-ib-oracle-config">
 		<ee:transform doc:name="Transform Message">
