@@ -21,7 +21,7 @@ pipeline {
         configFileProvider([configFile(fileId: 'custom-settings', variable: 'MAVEN_SETTINGS')]) {
           sh 'mvn clean install -s $MAVEN_SETTINGS'
         } 
-      }  
+      }
     }
 
     stage('Deploy CloudHub') {
