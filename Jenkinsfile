@@ -18,12 +18,9 @@ pipeline {
     
     stage('Build Application') {
       steps {
-        configFileProvider([configFile(fileId: 'custom-settings', variable: 'MAVEN_SETTINGS')]) {
-          sh 'mvn clean install -s $MAVEN_SETTINGS'
-        } 
-      }
+        sh 'mvn clean install'
+      }  
     }
-
     stage('Deploy CloudHub') {
       environment {
         ANYPOINT_CREDENTIALS = credentials('efd47c2c-1afe-44f3-819e-4f246697cfb5')

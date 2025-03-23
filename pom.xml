@@ -35,7 +35,13 @@
 						<provider>MC</provider>
 						<environment>${cloud.env}</environment>
 						<target>Cloudhub-US-East-2</target>
-						<server>Repository</server>
+						<servers>
+							<server>
+							<id>Repository</id>
+							<username>mulesoftTraining8</username>
+							<password>Novaknole16@</password>
+							</server>
+						</servers>
 						<username>${cloud.user}</username>
 						<password>${cloud.password}</password>
 						<applicationName>${cloudhubAppName}</applicationName>
