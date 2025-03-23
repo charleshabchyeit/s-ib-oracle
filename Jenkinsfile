@@ -24,7 +24,7 @@ pipeline {
 
     stage('Deploy to exchange') {
       steps {
-        sh 'mvn clean deploy'
+        sh 'mvn clean deploy -s build-config/settings.xml'
       }  
     }
 
