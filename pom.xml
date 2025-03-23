@@ -33,7 +33,7 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>${cloud.env}</environment>
+						<environment>DEV</environment>
 						<target>Cloudhub-US-East-2</target>
 						<muleVersion>${mule.version}</muleVersion>
 						<username>${cloud.user}</username>
