@@ -15,6 +15,13 @@ pipeline {
                 }
             }
     }
+    stage('Build') {
+      steps {
+        configFileProvider([configFile(fileId: 'custom-settings', variable: 'MAVEN_SETTINGS')]) {
+          sh 'mvn -s $MAVEN_SETTINGS clean install'
+        }
+      }
+    }
     stage('Build Application') {
       steps {
         sh 'mvn clean install'
