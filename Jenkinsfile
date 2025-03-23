@@ -18,7 +18,7 @@ pipeline {
     
     stage('Build Application') {
       steps {
-        sh 'mvn clean install -s MySettings'
+        sh 'mvn clean install -s build-config/settings.xml'
       }  
     }
     stage('Deploy CloudHub') {
