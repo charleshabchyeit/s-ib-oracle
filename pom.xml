@@ -33,12 +33,12 @@
 					<cloudhub2Deployment>
 						<uri>https://anypoint.mulesoft.com</uri>
 						<provider>MC</provider>
-						<environment>${environment}</environment>
+						<environment>${cloud.env}</environment>
 						<target>Cloudhub-US-East-2</target>
-						<muleVersion>${muleVersion}</muleVersion>
-						<username>${user}</username>
-						<password>${pass}</password>
-						<applicationName>${appName}</applicationName>
+						<muleVersion>${mule.version}</muleVersion>
+						<username>${cloud.user}</username>
+						<password>${cloud.password}</password>
+						<applicationName>${cloudhubAppName}</applicationName>
 						<replicas>1</replicas>
 						<vCores>1</vCores>
 						<deploymentSettings>
