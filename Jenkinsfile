@@ -21,6 +21,13 @@ pipeline {
         sh 'mvn clean install -s build-config/settings.xml'
       }  
     }
+
+    stage('Deploy to exchange') {
+      steps {
+        sh 'mvn clean deploy'
+      }  
+    }
+
     stage('Deploy CloudHub') {
       environment {
         ANYPOINT_CREDENTIALS = credentials('efd47c2c-1afe-44f3-819e-4f246697cfb5')
