@@ -65,6 +65,7 @@ pipeline {
           mvn deploy -s build-config/settings.xml \
             -DmuleDeploy \
             -Dcloudhub2Deployment \
+            -Dcloud.env=${env.envName} \
             -DdeploymentTarget=${env.deploymentTargetId} \
             -Dreplicas=${env.replicas} \
             -DvCores=${env.vCores} \
