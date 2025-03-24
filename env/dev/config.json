@@ -1,12 +1,7 @@
 {
-    "envConfig": {
-        "envName": "DEV",
-        "cloudhubAppName": "s-ib-oracle-dev",
+    "envConfig":{
+        "envName" : "DEV",
         "muleVersion": "4.9.2",
-        "deploymentTargetId": "Cloudhub-US-East-2",
-        "replicas": 1,
-        "vCores": 0.1,
-        "workerType": "CH2",
-        "autoRestart": true
+        "cloudhubAppName": "s-ib-oracle-dev"
     }
 }
