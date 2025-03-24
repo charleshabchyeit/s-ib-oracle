@@ -1,7 +1,7 @@
 {
     "envConfig":{
         "envName" : "DEV",
-        "muleVersion": "4.9.2",
+        "muleVersion": "4.8.5",
         "cloudhubAppName": "s-ib-oracle-dev"
     }
 }
