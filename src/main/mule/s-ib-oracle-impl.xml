@@ -825,5 +825,6 @@ output application/json
 }]]></ee:set-payload>
             </ee:message>
         </ee:transform>
+		<logger level="INFO" doc:name="Logger" doc:id="1e12a82e-d6b0-4e0b-9857-ec3f2bc9625a" />
     </flow>
 </mule>
