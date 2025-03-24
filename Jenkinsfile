@@ -33,7 +33,7 @@ pipeline {
         ANYPOINT_CREDENTIALS = credentials('efd47c2c-1afe-44f3-819e-4f246697cfb5')
       }
       steps {
-        sh "mvn deploy -s build-config/settings.xml -DmuleDeploy -Dcloud.env=${env.envName} -DcloudhubAppName=${env.cloudhubAppName} -Dmule.version=${env.muleVersion} -Dcloud.user=${ANYPOINT_CREDENTIALS_USR} -Dcloud.password=${ANYPOINT_CREDENTIALS_PSW} -s build-config/settings.xml"
+        sh "mvn deploy -s build-config/settings.xml -DmuleDeploy"
       }
     }
   }
