@@ -8,4 +8,5 @@
         "vCores": 0.1,
         "workerType": "CH2",
         "autoRestart": true
+    }
 }
