@@ -1,7 +1,7 @@
 {
     "envConfig":{
-        "envName" : "PROD",
+        "envName" : "UAT",
         "muleVersion": "4.9.2",
-        "cloudhubAppName": "s-ib-oracle-prod"
+        "cloudhubAppName": "s-ib-oracle-uat"
     }
 }
